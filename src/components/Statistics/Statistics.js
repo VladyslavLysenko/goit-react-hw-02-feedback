@@ -11,8 +11,6 @@ export const Statistics = ({
 
       return (
           <>
-     
-              
               <ul className='Statistics'>
                   <li><span>Good: {valueGood}</span></li>
                   <li> <span>Neutral: {valueNeutral}</span></li>

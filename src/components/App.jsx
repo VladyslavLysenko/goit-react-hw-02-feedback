@@ -2,7 +2,8 @@
 import React from 'react'
 import { FeedbackOptions } from './Feedback/FeedbackOptions'
 import { Statistics } from './Statistics/Statistics'
-import {Notification} from './Notification/Notification'
+import { Notification } from './Notification/Notification'
+import { SectionPart } from './Section/Section';
 // Main section App
 import options from 'options.json';
 
@@ -51,29 +52,30 @@ export class App extends  React.Component {
         const { good, neutral, bad } = this.state;
     return (
         <>
-            <p>Please leave feedback</p>
-            <FeedbackOptions
-                options={options}
-                onLeaveFeedback={this.handleIncrement} 
+            <SectionPart title="Please leave feedback">
+                <FeedbackOptions
+                    options={options}
+                    onLeaveFeedback={this.handleIncrement} 
                 
-            />
-            <p>Statistics</p>
-            
-            {totalFeedback
-                ? (
-                    <Statistics
-                        valueGood={good}
-                        valueNeutral={neutral}
-                        valueBad={bad}
-                        totalFeedback={totalFeedback}
-                        positiveFeedbackPercentage={positiveFeedbackPercentage}
-                    
-                    />
-                )
-                : (
-                    <Notification message="There is no feedback" />
-                )
-            }
+                />
+            </SectionPart>
+            <SectionPart title="Statistics">
+                {totalFeedback
+                    ? (
+                        <Statistics
+                            valueGood={good}
+                            valueNeutral={neutral}
+                            valueBad={bad}
+                            totalFeedback={totalFeedback}
+                            positiveFeedbackPercentage={positiveFeedbackPercentage}
+                            
+                        />
+                    )
+                    : (
+                        <Notification message="There is no feedback" />
+                    )
+                }
+            </SectionPart>
         </>
       
     );
