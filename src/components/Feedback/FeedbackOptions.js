@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {BtnList,Btn} from './FeedbackOptions.styled'
 export const FeedbackOptions = ({options, onLeaveFeedback }) => (
-  <div>
-    <ul>
+  
+    <BtnList>
       {options.map(item => (
         <li key={item.name}>
-          <button type="button" onClick={onLeaveFeedback} name={item.name}>
+          <Btn type="button" onClick={onLeaveFeedback} name={item.name} >
             {item.value}
-          </button>
+          </Btn>
         </li>
       ))}
-    </ul>
-  </div>
+    </BtnList>
+  
 );
 FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(

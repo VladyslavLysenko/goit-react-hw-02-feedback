@@ -1,7 +1,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types';
-
+import {StatList} from './Statistics.styled'
 export const Statistics = ({
     valueGood,
     valueNeutral,
@@ -11,7 +11,7 @@ export const Statistics = ({
 
       return (
           <>
-              <ul className='Statistics'>
+              <StatList>
                   <li><span>Good: {valueGood}</span></li>
                   <li> <span>Neutral: {valueNeutral}</span></li>
                   <li><span>Bad: {valueBad}</span></li>
@@ -19,7 +19,7 @@ export const Statistics = ({
                   <li><span>Positive feedback: {positiveFeedbackPercentage}%</span></li>
                  
                   
-              </ul>
+              </StatList>
         </>
           
 

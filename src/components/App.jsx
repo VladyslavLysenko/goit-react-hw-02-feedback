@@ -4,6 +4,7 @@ import { FeedbackOptions } from './Feedback/FeedbackOptions'
 import { Statistics } from './Statistics/Statistics'
 import { Notification } from './Notification/Notification'
 import { SectionPart } from './Section/Section';
+import { GlobalStyle } from "../GlobalStyle";
 // Main section App
 import options from 'options.json';
 
@@ -52,6 +53,7 @@ export class App extends  React.Component {
         const { good, neutral, bad } = this.state;
     return (
         <>
+            <GlobalStyle />
             <SectionPart title="Please leave feedback">
                 <FeedbackOptions
                     options={options}
