@@ -1,71 +1,64 @@
 
 
 import React from 'react'
+import { Counter } from './FeedbackCounter/FeedbackCounter'
+import {Statistics} from './Statistics/Statistics'
 // Main section App
-export const App = () => {
-  return (
-    <>
+
+export class App extends  React.Component {
+  state = {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    }
+    
+     handleIncrement = e => {
+    const target = e.target.name;
+    this.setState(prevState => ({
+      [target]: prevState[target] + 1,
+    }));
+  };
+
+  handleGood = (e) => {
+      this.setState(prevState => {
+          return {
+              good: prevState.good + 1
+          }
+      })
+  }
+  
+  handleNeutral = (e) => {
+      this.setState(prevState => {
+          return {
+              neutral: prevState.neutral + 1
+          }
+      })
+  }
+  handleBad = (e) => {
+      this.setState(prevState => {
+          return {
+              bad: prevState.bad + 1
+          }
+      })
+  }
+  countTotalFeedback = () => this.state.good + this.state.neutral + this.state.bad;
+  countPositiveFeedbackPercentage = () => this.state.good / (this.countTotalFeedback() || 1) * 100;
+    render() {
+    return (
+        <>
         <p>Please leave feedback</p>
-          <Counter />
-          
-    </>
-  );
+            <Counter
+                onHandleGood={this.handleGood}
+                onHandleNeutral={this.handleNeutral}
+                onHandleBad={this.handleBad}   
+            />
+
+            {/* <FeedbackOptions options={} onLeaveFeedback={}/> */}
+            
+          <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()}/>  
+      </>
+    );
+  }
+
 };
 // Counter
-class Counter extends React.Component{
-    state = {
-        good: 0,
-        neutral: 0,
-        bad: 0
-    }
-
-    handleGood = (event) => {
-        console.log(this.state.good )
-        console.log(event.type)
-        this.setState(prevState => {
-            return {
-                good: prevState.good +1
-            }
-        })
-    }
-   
-    handleNeutral = (event) => {
-        console.log(this.state.neutral)
-        console.log(event.type)
-        this.setState(prevState => {
-            return {
-                neutral: prevState.neutral +1
-            }
-        })
-    }
-    handleBad = (event) => {
-        console.log(this.state.bad)
-        console.log(event.type)
-         this.setState(prevState => {
-            return {
-                bad: prevState.bad +1
-            }
-        })
-    }
-
-  render() {
-      return (
-          <>
-          <div className='FeedbackCounter'>
-              <button type='button' onClick={this.handleGood}>Good</button>
-              <button type='button' onClick={this.handleNeutral}>Neutral</button>
-              <button type='button' onClick={this.handleBad}>Bad</button>
-              </div>
-              <p>Statistics</p>
-              <ul className='Statistics'>
-                  <li><span>Good: {this.state.good}</span></li>
-                  <li> <span>Neutral: {this.state.neutral}</span></li>
-                  <li><span>Bad: {this.state.bad}</span></li>
-                  
-              </ul>
-        </>
-          
-
-    )
-  }
-}

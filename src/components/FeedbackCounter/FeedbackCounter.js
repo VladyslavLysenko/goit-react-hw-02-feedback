@@ -1,15 +1,12 @@
-// import React from 'react'
+import React from 'react'
 
-// class Counter extends React.Component{
-//   render() {
-//     return (
-//       <div className='FeedbackCounter'>
-//         <button type='button' onClick={()=> {console.log("Good")}}>Good</button>
-//         <button type='button'  onClick={()=> {console.log("Neutral")}}>Neutral</button>
-//         <button type='button' onClick={()=> {console.log("Bad")}}>Bad</button>
-//       </div>
-//     )
-//   }
-// }
+export const Counter = ({onHandleGood,onHandleNeutral,onHandleBad}) =>{
+      return (
+          <div className='FeedbackCounter'>
+              <button type='button' onClick={onHandleGood}>Good</button>
+              <button type='button' onClick={onHandleNeutral}>Neutral</button>
+              <button type='button' onClick={onHandleBad}>Bad</button>
+          </div>     
+    )
+}
 
-// export default Counter;
