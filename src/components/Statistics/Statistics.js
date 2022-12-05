@@ -1,19 +1,24 @@
 
 import React from 'react'
+import PropTypes from 'prop-types';
 
-
-export const Statistics = ({ good, neutral, bad, total, positivePercentage }) =>{
+export const Statistics = ({
+    valueGood,
+    valueNeutral,
+    valueBad,
+    totalFeedback,
+    positiveFeedbackPercentage }) => {
 
       return (
           <>
      
-              <p>Statistics</p>
+              
               <ul className='Statistics'>
-                  <li><span>Good: {good}</span></li>
-                  <li> <span>Neutral: {neutral}</span></li>
-                  <li><span>Bad: {bad}</span></li>
-                  <li><span>Total: {total}</span></li>
-                  <li><span>Positive feedback: {Math.round(positivePercentage)}%</span></li>
+                  <li><span>Good: {valueGood}</span></li>
+                  <li> <span>Neutral: {valueNeutral}</span></li>
+                  <li><span>Bad: {valueBad}</span></li>
+                  <li><span>Total: {totalFeedback}</span></li>
+                  <li><span>Positive feedback: {positiveFeedbackPercentage}%</span></li>
                  
                   
               </ul>
@@ -24,3 +29,10 @@ export const Statistics = ({ good, neutral, bad, total, positivePercentage }) =>
   
 }
 
+Statistics.propTypes = {
+  valueGood: PropTypes.number.isRequired,
+  valueBad: PropTypes.number.isRequired,
+  valueNeutral: PropTypes.number.isRequired,
+  totalFeedback: PropTypes.number.isRequired,
+  positiveFeedbackPercentage: PropTypes.number.isRequired,
+};
